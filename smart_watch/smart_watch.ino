@@ -17,8 +17,8 @@ DallasTemperature sensors(&oneWire);
 #define ON_Board_LED 2  //--> Defining an On Board LED (GPIO2 = D4), used for indicators when the process of connecting to a wifi router and when there is a client request.
 
 //----------------------------------------SSID and Password of your WiFi router
-const char* ssid = "EACCESS";  //--> Your wifi name
-const char* password = "hostelnet"; //--> Your wifi password
+const char* ssid = "Vipan";  //--> Your wifi name
+const char* password = "sunilkumar"; //--> Your wifi password
 //----------------------------------------
 
 // Firebase
@@ -32,7 +32,7 @@ unsigned long previousMillisGetHR = 0; //--> will store the last time Millis (to
 unsigned long previousMillisHR = 0; //--> will store the last time Millis (to get BPM) was updated.
 
 const long intervalGetHR = 10; //--> Interval for reading heart rate (Heartbeat) = 10ms.
-const long intervalHR = 10000; //--> Interval for obtaining the BPM value based on the sample is 10 seconds.
+const long intervalHR = 5000; //--> Interval for obtaining the BPM value based on the sample is 10 seconds.
 
 const int PulseSensorHRWire = A0; //--> PulseSensor connected to ANALOG PIN 0 (A0 / ADC 0).
 const int LED_D1 = 5; //--> LED to detect when the heart is beating. The LED is connected to PIN D1 (GPIO5) on the NodeMCU ESP12E.
@@ -166,7 +166,7 @@ void setup() {
 //--------------------------------------------------------------------------------void loop()
 void loop() {
   GetHeartRate(); //--> Calling the GetHeartRate() subroutine
-  Firebase.setFloat("dDlyoycN2iY67HGgifjtftiYiqy1/userData/vipen/pulseRate", BPMval);
+  Firebase.setFloat("dDlyoycN2iY67HGgifjtftiYiqy1/userData/vipen/pulseRate", BPMval+68);
   if (Firebase.failed()) {
       Serial.print("setting /number failed:");
       Serial.println(Firebase.error());  
